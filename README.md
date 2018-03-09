@@ -1,43 +1,89 @@
-# HarmonicsHelper
+# Harmonics Helper
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/harmonics_helper`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is tools to help learning 4 parts harmonics who use score making application.
+Harmonics contains many prohibition and it's difficult to find prohibitations for learner.
+This tool check prohibitition or some important things from MusicXML files - most of the score making application describe score as this format internal and user can export MusicXML easily-
 
-TODO: Delete this and the text above, and describe your gem
+---
 
-## Installation
+### Requirements
 
-Add this line to your application's Gemfile:
+Ruby is required
+Please install ruby
 
-```ruby
-gem 'harmonics_helper'
+And support score is four parts score only
+
+---
+
+#### How To Install Ruby
+
+- for windows
+
+Download installer and install Ruby
+
+[Ruby Instller download page](https://rubyinstaller.org/)
+
+Set the pathy
+
+[How to set path](https://www.computerhope.com/issues/ch000549.htm)
+
+Check install is finished?
+
+Use command prompt or Power shell etc..
+
+If not, please reboot
+
+```sh
+ruby -v
 ```
 
-And then execute:
+Install bundler
 
-    $ bundle
+```sh
+gem install bundler
+```
 
-Or install it yourself as:
+- for Mac
 
-    $ gem install harmonics_helper
+ruby is already installed, but it may be older version
 
-## Usage
+If not move, please update version
 
-TODO: Write usage instructions here
 
-## Development
+Install homebrew
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+[Homebrew](https://brew.sh/)
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Install rbenv and update Ruby version
 
-## Contributing
+```sh
+brew install rbenv ruby-build
+rbenv install 2.5.0
+rbenv global 2.5.0
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/harmonics_helper. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Confirm update version
 
-## License
+```sh
+ruby -v
+```
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Install bundler
 
-## Code of Conduct
+```sh
+gem install bundler
+```
 
-Everyone interacting in the HarmonicsHelper project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/harmonics_helper/blob/master/CODE_OF_CONDUCT.md).
+- for linux
+
+Good luck(maybe easy to linux user)
+
+---
+
+### Usage
+
+set xml files under files directory and execute
+
+```sh
+bundle exec ruby exe/main.rb [filename]
+```
