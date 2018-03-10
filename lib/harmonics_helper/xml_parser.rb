@@ -19,7 +19,7 @@ module HarmonicsHelper
     # @return [Array] part array as integers
     def parts()
       REXML::XPath.each(@document, "//note/voice/text()"){ |element| element }
-        .map{ |text| text.to_s().to_i() }
+        .map{ |text| text.to_s.to_i }
         .uniq
         .sort
     end
@@ -29,8 +29,8 @@ module HarmonicsHelper
     # @return [Array] sounds as numbers array
     def sounds(part)
       REXML::XPath.each(@document, "//note"){ |element| element }
-        .select{ |e| e.elements["voice"].text.to_i() == part}
-        .map{ |e| e.elements["pitch/octave"].text.to_i() * 12 + @sounds[e.elements["pitch/step"].text]}
+        .select{ |e| e.elements["voice"].text.to_i == part}
+        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @sounds[e.elements["pitch/step"].text]}
     end
 
 
@@ -40,14 +40,14 @@ module HarmonicsHelper
     # 
     # @return [Integer] beat
     def beat()
-      @document.elements["//attributes/time/beats"].text.to_i()
+      @document.elements["//attributes/time/beats"].text.to_i
     end
 
     # get beat denominator
     #
     # @return [Integer] beat_type
     def beat_type()
-      @document.elements["//attributes/time/beat-type"].text.to_i()
+      @document.elements["//attributes/time/beat-type"].text.to_i
     end
 
     # get all sounds dulation(unit of length) of part
@@ -55,8 +55,8 @@ module HarmonicsHelper
     # @return [Array] durations as numbers array
     def durations(part)
       REXML::XPath.each(@document, "//note"){ |element| element }
-        .select{ |e| e.elements["voice"].text.to_i() == part}
-        .map{ |e| e.elements["duration"].text.to_i() }
+        .select{ |e| e.elements["voice"].text.to_i == part}
+        .map{ |e| e.elements["duration"].text.to_i }
     end
 
     attr_accessor :document
