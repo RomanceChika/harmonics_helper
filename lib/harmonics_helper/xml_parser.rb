@@ -8,6 +8,7 @@ module HarmonicsHelper
     
     # initialize
     # set document by file name
+    # set sounds by config
     def initialize(file_name)
       @document = REXML::Document.new(open(file_path(file_name)))
       @sounds = YAML.load_file(config_path("sounds.yml"))
@@ -33,7 +34,7 @@ module HarmonicsHelper
     end
 
 
-    # ! information about rhythem. maybe used nonchode tone?
+    # ! information about rhythem. maybe used when nonchode tone include?
 
     # get beat numerator
     # 
@@ -69,7 +70,8 @@ module HarmonicsHelper
       File.join(File.dirname(__FILE__), '../../files/' + file_name)
     end
 
-    # get config full path it will be used by other files
+    # get config full path
+    # TODO: it will be used by other files, should not be private
     def config_path(file_name)
       File.join(File.dirname(__FILE__), '../../config/' + file_name)
     end
