@@ -3,8 +3,8 @@ RSpec.describe HarmonicsHelper::Parser do
   let(:parser) { HarmonicsHelper::Parser.new("MusicXMLSample.xml") }
 
   describe "#initialize" do
-    it "able to read document" do
-      expect(parser.document.nil?).to eq(false)
+    it "document not to be nill" do
+      expect(parser.document).not_to be nil
     end
   end
 
@@ -16,9 +16,9 @@ RSpec.describe HarmonicsHelper::Parser do
 
   describe "#sounds" do
     # sample soprano is 1 and bass is 6
-    it "sample soprano start sound is 5E" do
+    it "sample soprano start with 5E" do
       # 5E is 12*5 + 4 = 64
-      expect(parser.sounds(1)[0]).to eq(64)
+      expect(parser.sounds(1)).to start_with 64
     end
 
     it "sample soprano length is 8" do
@@ -29,9 +29,9 @@ RSpec.describe HarmonicsHelper::Parser do
       expect(parser.sounds(1).length).to eq(parser.sounds(6).length)
     end
 
-    it "sample soprano end sound is 5C" do
+    it "sample soprano is end with 5C" do
       # 5C is 12*5 + 0 = 60
-      expect(parser.sounds(1).last).to eq(60)
+      expect(parser.sounds(1)).to end_with 60 
     end
   end
 
