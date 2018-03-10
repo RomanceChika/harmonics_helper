@@ -1,6 +1,3 @@
-# config: utf-8
-require "spec_helper"
-
 RSpec.describe HarmonicsHelper::Parser do
 
   let(:parser) { HarmonicsHelper::Parser.new("MusicXMLSample.xml") }

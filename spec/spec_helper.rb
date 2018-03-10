@@ -1,6 +1,5 @@
 require "bundler/setup"
 require "harmonics_helper"
-require "harmonics_helper/xml_parser"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
