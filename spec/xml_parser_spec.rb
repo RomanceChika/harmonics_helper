@@ -51,6 +51,10 @@ RSpec.describe HarmonicsHelper::Parser do
   end
 
   describe "#durations" do
+    it "sample soprano durations length is 8" do
+      expect(parser.durations(1).length).to eq(8)
+    end
+
     it "sample soprano durations[2,2,2,2,2,2,4,4]" do
       expect(parser.durations(1)).to eq([2,2,2,2,2,2,4,4])
     end
