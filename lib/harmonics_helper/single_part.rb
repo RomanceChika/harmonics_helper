@@ -7,6 +7,7 @@ module HarmonicsHelper
 
     # initialize
     def initialize(sounds, durations)
+      durations_validator(sounds, durations)
       @sounds = sounds
       @durations = durations
     end

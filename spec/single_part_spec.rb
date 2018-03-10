@@ -5,6 +5,14 @@ RSpec.describe HarmonicsHelper::SinglePart do
   SOPRANO_DURATION = [2, 2, 2, 2, 2, 2, 4, 4]
   let(:single_part) { HarmonicsHelper::SinglePart.new(SOPRANO_SOUNDS, SOPRANO_DURATION)}
 
+  describe "#initialize" do
+    context "raise exception" do
+      it "if soprano args length is different raise Error" do
+        expect{ HarmonicsHelper::PairParts.new(SOPRANO_SOUNDS, [2, 2, 2, 2, 2, 2]) }.to raise_error(StandardError)
+      end
+    end
+  end
+
   describe "#full_sounds" do
     it "sample full sounds are start with 64" do
       expect(single_part.full_sounds).to start_with 64
