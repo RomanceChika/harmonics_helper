@@ -1,3 +1,5 @@
+require "harmonics_helper/exceptions"
+
 module HarmonicsHelper
 
   # base class of parts
@@ -27,6 +29,14 @@ module HarmonicsHelper
     def progression_base(sounds)
       progression_common(sounds)
     end
+
+    # if sounds and durations is different size, raise Error
+    def durations_validator(sounds, durations)
+      if sounds.length != durations.length then
+        raise DurationUnmatchError(31, "sounds length is different from durations length")
+      end
+    end
+
 
   end
 
