@@ -8,8 +8,8 @@ module HarmonicsHelper
     # base class of code
     class CodeBase 
 
-      @@rotation_hash = YAML.load_file(HarmonicsHelper::Helper.config_path("rotation.yml"))
-      @@degrees_hash = YAML.load_file(HarmonicsHelper::Helper.config_path("degrees.yml"))
+      @@rotation_hash = YAML.load_file(Helper.config_path("rotation.yml"))
+      @@degrees_hash = YAML.load_file(Helper.config_path("degrees.yml"))
 
       def initialize(full_sounds)
         @full_harmonies = full_harmonies(full_sounds)

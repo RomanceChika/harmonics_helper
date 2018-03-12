@@ -9,7 +9,7 @@ module HarmonicsHelper
     include Helper
     
     # map sounds name to sounds number
-    @@sounds = YAML.load_file(HarmonicsHelper::Helper.config_path("sounds.yml"))
+    @@sounds = YAML.load_file(Helper.config_path("sounds.yml"))
     
     # initialize
     # set document by file name
