@@ -1,17 +1,21 @@
 require "rexml/document"
 require "yaml"
+require "harmonics_helper/etc/path_helper"
 
 module HarmonicsHelper
 
   # parse xml files
   class Parser
+    include Helper
+    
+    # map sounds name to sounds number
+    @@sounds = YAML.load_file(HarmonicsHelper::Helper.config_path("sounds.yml"))
     
     # initialize
     # set document by file name
     # set sounds by config
     def initialize(file_name)
       @document = REXML::Document.new(open(file_path(file_name)))
-      @sounds = YAML.load_file(config_path("sounds.yml"))
     end
 
     # get part voice numbers removed duplication
@@ -30,7 +34,7 @@ module HarmonicsHelper
     def sounds(part)
       REXML::XPath.each(@document, "//note"){ |element| element }
         .select{ |e| e.elements["voice"].text.to_i == part}
-        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @sounds[e.elements["pitch/step"].text]}
+        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @@sounds[e.elements["pitch/step"].text]}
     end
 
 
@@ -68,12 +72,6 @@ module HarmonicsHelper
     # @return [String] full path of file
     def file_path(file_name)
       File.join(File.dirname(__FILE__), '../../files/' + file_name)
-    end
-
-    # get config full path
-    # TODO: it will be used by other files, should not be private
-    def config_path(file_name)
-      File.join(File.dirname(__FILE__), '../../config/' + file_name)
     end
 
   end
