@@ -1,4 +1,4 @@
-require "harmonics_helper/exceptions"
+require "harmonics_helper/etc/exceptions"
 
 module HarmonicsHelper
 
@@ -36,7 +36,6 @@ module HarmonicsHelper
         raise DurationUnmatchError(31, "sounds length is different from durations length")
       end
     end
-
 
   end
 
