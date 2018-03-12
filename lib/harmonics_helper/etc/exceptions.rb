@@ -7,6 +7,17 @@ module HarmonicsHelper
       @code = error_code
       super("[#{error_code} - #{message}")
     end
+
+  end
+
+  # parts length contains unmatch
+  class PartsLengthException < StandardError
+
+    def initialize(error_code, message)
+      @code = error_code
+      super("[#{error_code} - #{message}")
+    end
+
   end
 
 
