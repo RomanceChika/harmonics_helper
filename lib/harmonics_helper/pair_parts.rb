@@ -1,9 +1,10 @@
-require "harmonics_helper/part_base"
+require "harmonics_helper/part"
 
 module HarmonicsHelper
   
   # class deal with pair of parts
-  class PairParts < PartBase
+  class PairParts
+    include PartModule 
 
     def initialize(sounds1, durations1, sounds2, durations2)
       durations_validator(sounds1, durations1)

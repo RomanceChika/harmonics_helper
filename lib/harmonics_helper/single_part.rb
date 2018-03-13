@@ -1,9 +1,10 @@
-require "harmonics_helper/part_base"
+require "harmonics_helper/part"
 
 module HarmonicsHelper
 
   # information about single part
-  class SinglePart < PartBase
+  class SinglePart
+    include PartModule
 
     # initialize
     def initialize(sounds, durations)

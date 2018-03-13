@@ -2,10 +2,8 @@ require "harmonics_helper/etc/exceptions"
 
 module HarmonicsHelper
 
-  # base class of parts
-  class PartBase
-
-    protected
+  # deal with part
+  module PartModule
     # get progression common
     def progression_common(sounds)
       sounds.map.with_index { |sound, index| (sounds.rotate(1)[index].nil? || sound.nil?)? 0 : sounds.rotate(1)[index] - sound }
@@ -36,7 +34,6 @@ module HarmonicsHelper
         raise DurationUnmatchError(31, "sounds length is different from durations length")
       end
     end
-
   end
 
 end
