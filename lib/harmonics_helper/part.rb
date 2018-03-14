@@ -4,6 +4,7 @@ module HarmonicsHelper
 
   # deal with part
   module PartModule
+
     # get progression common
     def progression_common(sounds)
       sounds.map.with_index { |sound, index| (sounds.rotate(1)[index].nil? || sound.nil?)? 0 : sounds.rotate(1)[index] - sound }
@@ -15,7 +16,17 @@ module HarmonicsHelper
     #
     # @return [Array] sounds array repeated sound where duration is over 2
     def full_sounds_base(sounds, durations)
-      sounds.map.with_index { |sound, index| Array.new(durations[index], sound) }
+      sounds.map.with_index{ |sound, index| Array.new(durations[index], sound) }
+        .flatten
+    end
+
+    # full sounds hash has sounds and order information
+    # base method
+    #
+    # @return [Array] sounds and order(count), each element is hash
+    def full_sounds_hash_base(sounds, durations)
+      # order is number for user, start with 1
+      sounds.map.with_index{ |sound, index| Array.new(durations[index], { "sound" => sound, "order" => index + 1 })}
         .flatten
     end
 

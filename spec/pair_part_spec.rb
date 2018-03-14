@@ -36,7 +36,50 @@ RSpec.describe HarmonicsHelper::PairParts do
       expect(pair_parts.full_intervals).to end_with 24
     end
   end
+
+  describe "#full_sounds_hash" do
+    it "sample full sounds hash sound is start with 64" do
+      expect(pair_parts.full_sounds_hash(1).first["sound"]).to eq(64)
+    end
+
+    it "sample full sounds hash bass sound is start with 36" do
+      expect(pair_parts.full_sounds_hash(2).first["sound"]).to eq(36)
+    end
+
+
+    it "sample full sounds hash order is start with 1" do
+      expect(pair_parts.full_sounds_hash(1).first["order"]).to eq(1) 
+    end
+
+    it "sample full sounds hash length is 20" do
+      expect(pair_parts.full_sounds_hash(1).length).to eq(20)
+    end
+
   
+    it "sample full sounds hash sound is end with 60" do
+      expect(pair_parts.full_sounds_hash(1).last["sound"]).to eq(60)
+    end
+
+    it "sample full sounds hash order is end with 8" do
+      expect(pair_parts.full_sounds_hash(1).last["order"]).to eq(8) 
+    end
+
+  end
+
+  describe "#intervals" do
+    it "sample intervals are start with 28" do
+      expect(pair_parts.intervals).to start_with 28
+    end
+
+    it "sample intervals length are 8" do
+      expect(pair_parts.intervals.length).to eq(8)
+    end
+  
+    it "sample intervals are end with 24" do
+      expect(pair_parts.intervals).to end_with 24
+    end
+  end
+
   describe "#full_interval_progression" do
     it "sample full interval progression is start with 0" do
       expect(pair_parts.full_interval_progression).to start_with 0
@@ -51,8 +94,22 @@ RSpec.describe HarmonicsHelper::PairParts do
       expect(pair_parts.full_interval_progression.length).to eq(19)
     end
 
-    it "sample full interval progression is end with -2" do
+    it "sample full interval progression is end with 0" do
       expect(pair_parts.full_interval_progression).to end_with 0
+    end
+  end
+
+  describe "#interval_progression" do
+    it "sample interval progression is start with -4" do
+      expect(pair_parts.intervals_progression).to start_with -4
+    end
+
+    it "sample interval progression length is 7" do
+      expect(pair_parts.intervals_progression.length).to eq(7)
+    end
+
+    it "sample interval progression is end with 5" do
+      expect(pair_parts.intervals_progression).to end_with 5 
     end
   end
 
