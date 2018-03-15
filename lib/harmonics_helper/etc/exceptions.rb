@@ -11,7 +11,7 @@ module HarmonicsHelper
   end
 
   # parts length contains unmatch
-  class PartsLengthException < StandardError
+  class PartsLengthError < StandardError
 
     def initialize(error_code, message)
       @code = error_code

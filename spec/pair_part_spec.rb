@@ -82,26 +82,25 @@ RSpec.describe HarmonicsHelper::PairParts do
 
   describe "#full_interval_progression" do
     it "sample full interval progression is start with 0" do
-      expect(pair_parts.full_interval_progression).to start_with 0
+      expect(pair_parts.full_interval_progression[0]["progress"]).to eq(0)
     end
 
-    it "sample full interval progression first change is 4" do
-      expect(pair_parts.full_interval_progression).to start_with 0
+    it "sample full interval progression first change is -4" do
+      expect(pair_parts.full_interval_progression[2]["progress"]).to eq(-4)
     end
-
 
     it "sample full interval progression length is 20" do
       expect(pair_parts.full_interval_progression.length).to eq(20)
     end
 
     it "sample full interval progression is end with 0" do
-      expect(pair_parts.full_interval_progression).to end_with 0
+      expect(pair_parts.full_interval_progression[19]["progress"]).to eq(0)
     end
   end
 
   describe "#interval_progression" do
     it "sample interval progression is start with 0" do
-      expect(pair_parts.intervals_progression).to start_with 0 
+      expect(pair_parts.intervals_progression[0]["progress"]).to eq(0) 
     end
 
     it "sample interval progression length is 8" do
@@ -109,7 +108,7 @@ RSpec.describe HarmonicsHelper::PairParts do
     end
 
     it "sample interval progression is end with 5" do
-      expect(pair_parts.intervals_progression).to end_with 5 
+      expect(pair_parts.intervals_progression[7]["progress"]).to eq(5) 
     end
   end
 

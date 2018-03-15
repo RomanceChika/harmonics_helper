@@ -29,7 +29,7 @@ RSpec.describe HarmonicsHelper::SinglePart do
   
   describe "#progression" do
     it "sample progression is start with 0" do
-      expect(single_part.progression).to start_with 0
+      expect(single_part.progression[0]["progress"]).to eq(0)
     end
 
     it "sample progression length is 8" do
@@ -37,21 +37,21 @@ RSpec.describe HarmonicsHelper::SinglePart do
     end
 
     it "sample progression is end with -2" do
-      expect(single_part.progression).to end_with -2
+      expect(single_part.progression[7]["progress"]).to eq(-2)
     end
   end
 
   describe "#full_progression" do
     it "sample full progression is start with 0" do
-      expect(single_part.full_progression).to start_with 0
+      expect(single_part.full_progression[0]["progress"]).to start_with 0
     end
 
     it "sample full progression length is 20" do
       expect(single_part.full_progression.length).to eq(20)
     end
 
-    it "sample full progression is end with -2" do
-      expect(single_part.full_progression).to end_with 0
+    it "sample full progression is end with 0" do
+      expect(single_part.full_progression[19]["progress"]).to eq(0)
     end
   end
 
