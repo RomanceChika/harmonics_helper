@@ -5,10 +5,13 @@ module HarmonicsHelper
   # deal with part
   module PartModule
 
-    # get progression common
-    def progression_common(sounds)
-      sounds.map.with_index { |sound, index| (sounds.rotate(1)[index].nil? || sound.nil?)? 0 : sounds.rotate(1)[index] - sound }
-        .select.with_index{ |diff, index| index!=sounds.length-1 } # last element is not required
+    # get progression
+    # base method
+    #
+    # @params [Array] sounds
+    # @return [Array] progression as number array
+    def progression_base(sounds)
+      sounds.map.with_index { |sound, index| (sounds.rotate(-1)[index].nil? || sound.nil? || index==0)? 0 : sound - sounds.rotate(-1)[index] }
     end
 
     # get sounds include durations info
@@ -28,15 +31,6 @@ module HarmonicsHelper
       # order is number for user, start with 1
       sounds.map.with_index{ |sound, index| Array.new(durations[index], { "sound" => sound, "order" => index + 1 })}
         .flatten
-    end
-
-    # get progression of part
-    # if elements is nil, progression number consider as 0
-    # base method
-    #
-    # @return [Array] diff of neiboring sounds as number array
-    def progression_base(sounds)
-      progression_common(sounds)
     end
 
     # if sounds and durations is different size, raise Error

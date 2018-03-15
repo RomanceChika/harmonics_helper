@@ -40,7 +40,7 @@ module HarmonicsHelper
     #
     # @return [Array] interval progression as numbers array
     def full_interval_progression()
-      progression_common(full_intervals)
+      progression_base(full_intervals)
     end
 
     # get intervals of pair parts
@@ -56,7 +56,7 @@ module HarmonicsHelper
     #
     # @return [Array] interval progression as numbers array
     def intervals_progression()
-      progression_common(intervals)
+      progression_base(intervals)
     end
 
     private

@@ -33,7 +33,7 @@ module HarmonicsHelper
     #
     # @return [Array] diff of neiboring sounds as number array
     def full_progression()
-      progression_common(full_sounds)
+      progression_base(full_sounds)
     end
 
   end
