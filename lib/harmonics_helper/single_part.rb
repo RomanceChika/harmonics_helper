@@ -1,5 +1,6 @@
 require "harmonics_helper/part"
 
+
 module HarmonicsHelper
 
   # information about single part

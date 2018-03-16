@@ -37,8 +37,16 @@ module HarmonicsHelper
         .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @@sounds[e.elements["pitch/step"].text]}
     end
 
-
-    # ! information about rhythem. maybe used when nonchode tone include?
+    # get sounds and dutation info
+    #
+    # @param [Integer] part
+    # @part_info [Array] array has sound and duration hash
+    def part_info(part)
+      part_sounds = sounds(part)
+      part_durations = durations(part)
+      length = part_sounds.length
+      length.times.map { |index| { "sound" => sounds(part)[index], "duration" => durations(part)[index] } }
+    end
 
     # get beat numerator
     # 

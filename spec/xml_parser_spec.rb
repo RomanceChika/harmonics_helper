@@ -35,6 +35,35 @@ RSpec.describe HarmonicsHelper::Parser do
     end
   end
 
+  describe "#part_info" do
+    # sample soprano is 1 and bass is 6
+    it "sample soprano sound start with 5E" do
+      # 5E is 12*5 + 4 = 64
+      expect(parser.part_info(1)[0]["sound"]).to eq(64)
+    end
+  
+    it "sample soprano duration start with 2" do
+      expect(parser.part_info(1)[0]["duration"]).to eq(2)
+    end
+
+    it "sample soprano length is 8" do
+      expect(parser.part_info(1).length).to eq(8)
+    end
+
+    it "sample soprano length equal sample bass length" do
+      expect(parser.part_info(1).length).to eq(parser.part_info(6).length)
+    end
+
+    it "sample soprano is end with 5C" do
+      # 5C is 12*5 + 0 = 60
+      expect(parser.part_info(1)[7]["sound"]).to eq(60) 
+    end
+
+    it "sample soprano duration is end 4" do
+      expect(parser.part_info(1)[7]["duration"]).to eq(4) 
+    end
+  end
+
   describe "#beat" do
     it "sample beat is 4" do
       expect(parser.beat).to eq(4)
