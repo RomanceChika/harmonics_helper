@@ -12,7 +12,7 @@ module HarmonicsHelper
     # output 
     # TODO: output should be formatted
     def output
-      puts "conencutivet octave or fifth"
+      puts "conencutive octave or fifth"
       puts "true is probably prohibit"
       puts @prohibit_checker.concencutive_prohibits_all.each{ |prohibits| }.flatten.any?
       @prohibit_checker.concencutive_prohibits_all.each{ |prohibits| p prohibits }
