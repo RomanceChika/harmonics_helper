@@ -40,6 +40,7 @@ module HarmonicsHelper
     #
     # @return [Array] interval progression as numbers array
     def full_interval_progression()
+      # TODO: distance and single progression have different point, should be rewritten
       progression_base(full_intervals)
     end
 

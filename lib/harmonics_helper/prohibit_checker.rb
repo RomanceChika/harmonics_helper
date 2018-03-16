@@ -62,6 +62,9 @@ module HarmonicsHelper
       @rotations = Code::Rotations.new(@full_sounds)
     end
 
+    # check concencutive prohibits all pair
+    #
+    # @return [Array] prohibit boolean 2 dimension arrays
     def concencutive_prohibits_all()
       @parts.combination(2).map { 
         |part1, part2|
@@ -72,7 +75,22 @@ module HarmonicsHelper
       }
     end
 
+    # check hidden octave and fifth between soprano and bass
+    # TODO: decide soprano and bass automatic, don't hard cord
+    # TODO: make test code
+    #
+    # @return [Array] prohibit boolean arrays 
+    def hidden_prohibit_all()
+      hidden_prohibit(PairParts.new(@parser.sounds(1), @parser.durations(1), @parser.sounds(6), @parser.durations(6)).intervals_progression)
+    end
 
+    # check code confighred 
+    # TODO: if non harmonic tone is include,it is not prohibit ,alert
+    # 
+    # @return [Array] prohibit boolean arrays
+    def code_configured_all()
+      @rotations.rotation_types.map { |rotation_type| code?(rotation_type) }
+    end
 
 
 

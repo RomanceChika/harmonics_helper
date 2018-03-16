@@ -20,7 +20,7 @@ module HarmonicsHelper
         else
           progression[index]["sound"] = sound
           progression[index]["progress"] = sound - sounds.rotate(-1)[index]
-          progression[index]["direction"] = (progression[index]["sound"] - progression[index-1]["sound"] > 0)
+          progression[index]["direction"] = (progression[index]["sound"] - progression[index-1]["sound"] >= 0)
         end
       end
       progression
