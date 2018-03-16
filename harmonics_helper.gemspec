@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HarmonicsHelper::VERSION
   spec.authors       = ["RomanceChika"]
 
-  spec.summary       = To help harmonics stury
-  spec.description   = check harmonics rule automatic
+  spec.summary       = "help tool to study harmonics"
+  spec.description   = "check harmonics rule automatic by MusicXML"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
