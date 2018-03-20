@@ -11,13 +11,28 @@ module HarmonicsHelper
       include PartModule
       include Validators
 
+      # initialize
+      #
+      # @params [Parser] parser
       def initialize(parser)
         @parts = initialize_parts(parser)
         @common_duration = initialize_common_duration(parser)
         @four_parts = initialize_four_parts(parser, @parts)
       end
 
-      def dummy()
+      # get all pairs from 4 parts
+      #
+      # @return [Array[Array[Array[Hash]]]] 
+      def all_pairs()
+        @four_parts.combination(2).to_a
+      end
+
+      # get pair bass and soprano
+      #
+      # @return [Array[Array[Array[Hash]]]] 
+      def outer_pair()
+        # style is same with all_pairs
+        @four_parts.select.with_index { |part, index| index==0 || index==3 }.combination(2).to_a
       end
 
       private
@@ -36,7 +51,7 @@ module HarmonicsHelper
       end
 
       def initialize_four_parts(parser, parts)
-        @four_parts = parts.map { |part| parser.sounds(part) }.sort.map { |sounds| progression_base(sounds)}
+        parts.map { |part| parser.sounds(part) }.sort.map { |sounds| progression_base(sounds)}
       end
 
     end

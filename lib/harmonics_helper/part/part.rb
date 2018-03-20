@@ -20,11 +20,9 @@ module HarmonicsHelper
           if sounds.rotate(-1)[index].nil? || sound.nil? || index==0
             progression[index]["sound"] = sound
             progression[index]["progress"] = 0
-            progression[index]["direction"] = true
           else
             progression[index]["sound"] = sound
             progression[index]["progress"] = sound - sounds.rotate(-1)[index]
-            progression[index]["direction"] = (progression[index]["sound"] - progression[index-1]["sound"] >= 0)
           end
         end
         progression
@@ -32,10 +30,11 @@ module HarmonicsHelper
 
       # get distance of intervals in octave
       #
-      # @param [Hash] intervals
+      # @param [Integer] sound1
+      # param [Integer] sound2
       # @return [Array] intarvals number array in octave ranges
-      def distance_base(intervals)
-        intervals.values.map { |value| value["sound"] % 12 }
+      def distance_base(sound1, sound2)
+        (sound1 - sound2).abs % 12
       end
 
       # get sounds include durations info

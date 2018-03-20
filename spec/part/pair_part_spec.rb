@@ -1,24 +1,32 @@
+parts = [1, 2, 5, 6]
+soprano_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+alt_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+tenor_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+bass_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+soprano_sounds = [64, 65, 64, 62, 60, 65, 62, 60]
+alt_sounds = [55, 57, 55, 55, 52, 57, 55, 52]
+tenor_sounds = [48, 48, 48, 47, 48, 48, 47, 48]
+bass_sounds = [36, 41, 36, 43, 45, 41, 43, 36]
+beat = 4
+beat_type = 4
+
 RSpec.describe HarmonicsHelper::Part::PairParts do
 
   # These numbers comes from soprano and bass parts of MusicXMLSample
-  SOPRANO_SOUNDS = [64, 65, 64, 62, 60, 65, 62, 60]
-  SOPRANO_DURATION = [2, 2, 2, 2, 2, 2, 4, 4]
-  BASS_SOUNDS = [36, 41, 36, 43, 45, 41, 43, 36] 
-  BASS_DURATION = [2, 2, 2, 2, 2, 2, 4, 4]
-  let(:pair_parts) { HarmonicsHelper::Part::PairParts.new(SOPRANO_SOUNDS, SOPRANO_DURATION, BASS_SOUNDS, BASS_DURATION)}
+  let(:pair_parts) { HarmonicsHelper::Part::PairParts.new(soprano_sounds, soprano_durations, bass_sounds, bass_durations)}
 
   describe "#initialize" do
     context "raise exception" do
       it "if all length is different raise Error" do
-        expect{ HarmonicsHelper::Part::PairParts.new(SOPRANO_SOUNDS, SOPRANO_DURATION, BASS_SOUNDS, [2, 2, 2, 2, 2, 2, 2, 2]) }.to raise_error(HarmonicsHelper::Errors::LengthError)
+        expect{ HarmonicsHelper::Part::PairParts.new(soprano_sounds, soprano_durations, bass_sounds, [2, 2, 2, 2, 2, 2, 2, 2]) }.to raise_error(HarmonicsHelper::Errors::LengthError)
       end
 
       it "if base args length is different raise Error" do
-        expect{ HarmonicsHelper::Part::PairParts.new(SOPRANO_SOUNDS, SOPRANO_DURATION, BASS_SOUNDS, [2, 2, 2, 2, 2, 2, 2]) }.to raise_error(HarmonicsHelper::Errors::LengthError)
+        expect{ HarmonicsHelper::Part::PairParts.new(soprano_sounds, soprano_durations, bass_sounds, [2, 2, 2, 2, 2, 2, 2]) }.to raise_error(HarmonicsHelper::Errors::LengthError)
       end
 
       it "if soprano args length is different raise Error" do
-        expect{ HarmonicsHelper::Part::PairParts.new(SOPRANO_SOUNDS, [2, 2, 2, 2, 2, 2], BASS_SOUNDS, BASS_DURATION) }.to raise_error(HarmonicsHelper::Errors::LengthError)
+        expect{ HarmonicsHelper::Part::PairParts.new(soprano_sounds, [2, 2, 2, 2, 2, 2], bass_sounds, bass_durations) }.to raise_error(HarmonicsHelper::Errors::LengthError)
       end
 
     end

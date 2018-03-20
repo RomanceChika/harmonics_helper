@@ -33,7 +33,21 @@ module HarmonicsHelper
     # if each length is different, raise exception
     def length_validator()
       if @full_sounds1.length != @full_sounds2.length then
-      raise HarmonicsHelper::Errors::LengthError.new("length of each sound is different")
+        raise HarmonicsHelper::Errors::LengthError.new("length of each sound is different")
+      end
+    end
+
+    # check array size
+    def array_size_validator(array, size)
+      if array.length != size
+        raise HarmonicsHelper::Errors::LengthError.new("invalid input array length")
+      end
+    end
+    
+    # check same length of array
+    def same_length_validator(array1, array2)
+      if array1.length != array2.length
+        raise HarmonicsHelper::Errors::LengthError.new("length of each array is different") 
       end
     end
 
