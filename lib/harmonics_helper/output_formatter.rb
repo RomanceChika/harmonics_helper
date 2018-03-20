@@ -19,7 +19,7 @@ module HarmonicsHelper
       puts @prohibit_checker.consecutive_prohibits_all.each{ |prohibits| }.flatten.any? ? @@failure_message : @@success_message
       @prohibit_checker.consecutive_prohibits_all.map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }.each{ |prohibits| p prohibits }
       puts "is code?"
-      p @prohibit_checker.code_configured_all.all? ? @@success_message : @@failure_message
+      puts @prohibit_checker.code_configured_all.all? ? @@success_message : @@failure_message
       p @prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"}
       if has_prohibit?
         puts "[Success] Prohibit is not found"
