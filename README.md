@@ -92,38 +92,36 @@ example of contain prohibit
 
 ```sh
 $ bundle exec ruby exe/main.rb BadSample.xml
-conencutive octave or fifth
-true is probably prohibit
-true
-[false, false, false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false, true, false]
-[false, false, false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false, false, false]
-[false, false, false, false, true, false, false, false, true, false]
+consecutive octave or fifth
+[Failure] Prohibits are exist, please check yourself again
+["--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 is code?
-false is not code or has not 3rd tone
-false
-[true, true, true, true, true, true, true, true, false, true]
+"[Failure] Prohibits are exist, please check yourself again"
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
+[Failure] Prohibit is found
 ```
 
 example of good pattern
 
 ```sh
 $ bundle exec ruby exe/main.rb GoodSample.xml
-conencutive octave or fifth
-true is probably prohibit
-false
-[false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false]
-[false, false, false, false, false, false, false, false]
+consecutive octave or fifth
+[Success] Prohibits are not found
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 is code?
-false is not code or has not 3rd tone
-true
-[true, true, true, true, true, true, true, true]
+"[Success] Prohibits are not found"
+["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
+[Success] Prohibit is not found
 ```
 
 

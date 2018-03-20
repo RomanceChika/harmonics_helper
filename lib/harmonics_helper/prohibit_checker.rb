@@ -1,10 +1,12 @@
-require "harmonics_helper/part"
+require "harmonics_helper/etc/validators"
+require "harmonics_helper/part/part"
 require "harmonics_helper/code/rotations"
 
 module HarmonicsHelper
 
   module ProhibitCheckerModule
-    include PartModule
+    include Part::PartModule
+    include Validators
 
     # check if harmony makes code?
     #
@@ -14,17 +16,18 @@ module HarmonicsHelper
       rotation.empty? ? false : true
     end
 
-    # check conencutive octave or fifth
+    # check consective octave or fifth
     #
-    # @param [Array] progression
-    # @return [Array] prohibit as boolean array
-    def conencutive_prohibit(progression)
-      progression.to_a.map do |key, progress| 
-        if progress["direction"] && key!=0 && progress["progress"]==0 && ( progress["sound"] % 12 == 0 || progress["sound"] % 12 == 7 )
-          true
-        else
-          false
-        end
+    # @param [Array[Array[Hash]]] pair
+    # @return [Array[Boolean]] boolean true has prohibit
+    def consecutive_prohibit(pair)
+      array_size_validator(pair, 2)
+      same_length_validator(pair[0], pair[1])
+      common_length = pair[0].length
+      common_length.times.map do |index|
+        distance = distance_base(pair[0][index]["sound"], pair[1][index]["sound"]) 
+        parallel_motion = (pair[0][index]["progress"]  == pair[1][index]["progress"] && pair[0][index]["progress"] != 0)
+        ((distance % 12 == 0 || distance % 7 == 0) && parallel_motion) ? true : false
       end
     end
 
@@ -60,28 +63,21 @@ module HarmonicsHelper
       @parts = parser.parts
       @full_sounds = @parts.map { |part| @parser.sounds(part) }
       @rotations = Code::Rotations.new(@full_sounds)
+      @four_parts = Part::FourParts.new(parser)
     end
 
-    # check concencutive prohibits all pair
+    # check consencutive prohibits all pair
     #
     # @return [Array] prohibit boolean 2 dimension arrays
-    def concencutive_prohibits_all()
-      @parts.combination(2).map { 
-        |part1, part2|
-        conencutive_prohibit(
-         PairParts.new(@parser.sounds(part1), @parser.durations(part1), @parser.sounds(part2), @parser.durations(part2))
-          .intervals_progression
-        )
-      }
+    def consecutive_prohibits_all()
+     @four_parts.all_pairs.map { |pair| consecutive_prohibit(pair) }
     end
 
     # check hidden octave and fifth between soprano and bass
-    # TODO: decide soprano and bass automatic, don't hard cord
-    # TODO: make test code
+    # TODO: implement
     #
     # @return [Array] prohibit boolean arrays 
     def hidden_prohibit_all()
-      hidden_prohibit(PairParts.new(@parser.sounds(1), @parser.durations(1), @parser.sounds(6), @parser.durations(6)).intervals_progression)
     end
 
     # check code confighred 
@@ -92,9 +88,6 @@ module HarmonicsHelper
       @rotations.rotation_types.map { |rotation_type| code?(rotation_type) }
     end
 
-
-
   end
-
 
 end

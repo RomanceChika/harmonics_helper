@@ -1,15 +1,27 @@
 require "matrix"
 # These numbers comes from MusicXMLSample
-SOPRANO_SOUNDS = [64, 65, 64, 62, 60, 65, 62, 60]
-ALT_SOUNDS = [55, 57, 55, 59, 60, 57, 55, 52]
-TENOR_SOUNDS = [48, 48, 48, 50, 48, 48, 47, 48]
-BASS_SOUNDS = [36, 41, 36, 43, 45, 41, 43, 36] 
+soprano = [64, 65, 64, 62, 60, 65, 62, 60]
+alt = [55, 57, 55, 59, 60, 57, 55, 52]
+tenor = [48, 48, 48, 50, 48, 48, 47, 48]
+bass = [36, 41, 36, 43, 45, 41, 43, 36] 
 
-FULL_SOUNDS = [SOPRANO_SOUNDS, ALT_SOUNDS, TENOR_SOUNDS, BASS_SOUNDS]
+parts = [1, 2, 5, 6]
+soprano_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+alt_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+tenor_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+bass_durations = [2, 2, 2, 2, 2, 2, 4, 4]
+soprano_sounds = [64, 65, 64, 62, 60, 65, 62, 60]
+alt_sounds = [55, 57, 55, 55, 52, 57, 55, 52]
+tenor_sounds = [48, 48, 48, 47, 48, 48, 47, 48]
+bass_sounds = [36, 41, 36, 43, 45, 41, 43, 36]
+beat = 4
+beat_type = 4
+
+full_sounds = [soprano, alt, tenor, bass]
 
 RSpec.describe HarmonicsHelper::Code::Rotations do
 
-  let(:rotations) { HarmonicsHelper::Code::Rotations.new(FULL_SOUNDS)}
+  let(:rotations) { HarmonicsHelper::Code::Rotations.new(full_sounds)}
   
   describe "#initialize" do
     context "raise exception" do
@@ -29,7 +41,7 @@ RSpec.describe HarmonicsHelper::Code::Rotations do
       it "bad sample first rotation at first is empty" do
         # has not 3rd tone E
         bad_soprano_sounds = [60, 65, 64, 62, 60, 65, 62, 60]
-        bad_full_sounds = [bad_soprano_sounds, ALT_SOUNDS, TENOR_SOUNDS, BASS_SOUNDS]
+        bad_full_sounds = [bad_soprano_sounds, alt_sounds, tenor_sounds, bass_sounds]
         bad_rotations = HarmonicsHelper::Code::Rotations.new(bad_full_sounds)
         expect(bad_rotations.rotation_types).to start_with ""
       end
