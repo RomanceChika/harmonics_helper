@@ -40,6 +40,15 @@ module HarmonicsHelper
 
     end
 
+    # error about file path
+    class FilePathError < StandardError
+
+      def initialize(message)
+        @code = 30
+        super("[#{@code} - #{message}")
+      end
+    end
+
   end
 
 end

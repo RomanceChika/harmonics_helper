@@ -5,7 +5,11 @@ if ARGV.length == 0
   exit
 end
 file_name = ARGV[0]
-parser = HarmonicsHelper::Parser.new(file_name)
-prohibit_checker = HarmonicsHelper::ProhibitChecker.new(parser)
-output_formatter = HarmonicsHelper::OutputFormatter.new(prohibit_checker)
-output_formatter.output
+begin
+  parser = HarmonicsHelper::Parser.new(file_name)
+  prohibit_checker = HarmonicsHelper::ProhibitChecker.new(parser)
+  output_formatter = HarmonicsHelper::OutputFormatter.new(prohibit_checker)
+  output_formatter.output
+rescue Errno::ENOENT => e
+  puts "File is Not Found"
+end
