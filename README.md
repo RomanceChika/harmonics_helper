@@ -101,7 +101,7 @@ consecutive octave or fifth
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 is code?
-"[Failure] Prohibits are exist, please check yourself again"
+[Failure] Prohibits are exist, please check yourself again
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
 [Failure] Prohibit is found
 ```
@@ -119,7 +119,7 @@ consecutive octave or fifth
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 is code?
-"[Success] Prohibits are not found"
+[Success] Prohibits are not found
 ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
 [Success] Prohibit is not found
 ```
