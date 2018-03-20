@@ -1,14 +1,14 @@
-RSpec.describe HarmonicsHelper::SinglePart do
+RSpec.describe HarmonicsHelper::Part::SinglePart do
 
   # These numbers comes from soprano parts of MusicXMLSample
   SOPRANO_SOUNDS = [64, 65, 64, 62, 60, 65, 62, 60]
   SOPRANO_DURATION = [2, 2, 2, 2, 2, 2, 4, 4]
-  let(:single_part) { HarmonicsHelper::SinglePart.new(SOPRANO_SOUNDS, SOPRANO_DURATION)}
+  let(:single_part) { HarmonicsHelper::Part::SinglePart.new(SOPRANO_SOUNDS, SOPRANO_DURATION)}
 
   describe "#initialize" do
     context "raise exception" do
       it "if soprano args length is different raise Error" do
-        expect{ HarmonicsHelper::PairParts.new(SOPRANO_SOUNDS, [2, 2, 2, 2, 2, 2]) }.to raise_error(StandardError)
+        expect{ HarmonicsHelper::Part::PairParts.new(SOPRANO_SOUNDS, [2, 2, 2, 2, 2, 2]) }.to raise_error(StandardError)
       end
     end
   end

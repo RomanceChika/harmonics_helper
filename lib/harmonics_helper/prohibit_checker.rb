@@ -1,10 +1,10 @@
-require "harmonics_helper/part"
+require "harmonics_helper/part/part"
 require "harmonics_helper/code/rotations"
 
 module HarmonicsHelper
 
   module ProhibitCheckerModule
-    include PartModule
+    include Part::PartModule
 
     # check if harmony makes code?
     #
@@ -69,7 +69,7 @@ module HarmonicsHelper
       @parts.combination(2).map { 
         |part1, part2|
         conencutive_prohibit(
-         PairParts.new(@parser.sounds(part1), @parser.durations(part1), @parser.sounds(part2), @parser.durations(part2))
+         Part::PairParts.new(@parser.sounds(part1), @parser.durations(part1), @parser.sounds(part2), @parser.durations(part2))
           .intervals_progression
         )
       }
@@ -81,7 +81,7 @@ module HarmonicsHelper
     #
     # @return [Array] prohibit boolean arrays 
     def hidden_prohibit_all()
-      hidden_prohibit(PairParts.new(@parser.sounds(1), @parser.durations(1), @parser.sounds(6), @parser.durations(6)).intervals_progression)
+      hidden_prohibit(Part::PairParts.new(@parser.sounds(1), @parser.durations(1), @parser.sounds(6), @parser.durations(6)).intervals_progression)
     end
 
     # check code confighred 
@@ -92,9 +92,6 @@ module HarmonicsHelper
       @rotations.rotation_types.map { |rotation_type| code?(rotation_type) }
     end
 
-
-
   end
-
 
 end
