@@ -29,7 +29,7 @@ module HarmonicsHelper
     end
 
     def has_prohibit?
-      !@prohibit_checker.consecutive_prohibits_all.each{ |prohibits| }.flatten.any? || @prohibit_checker.code_configured_all.all?
+      !@prohibit_checker.consecutive_prohibits_all.each{ |prohibits| }.flatten.any? && @prohibit_checker.code_configured_all.all?
     end
   end
 end
