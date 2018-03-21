@@ -3,7 +3,7 @@ require "harmonics_helper/version"
 require "harmonics_helper/xml_parser"
 require "harmonics_helper/prohibit_checker"
 
-require "harmonics_helper/output_formatter"
+require "harmonics_helper/prohibit_formatter"
 
 require "harmonics_helper/part/single_part"
 require "harmonics_helper/part/pair_parts"

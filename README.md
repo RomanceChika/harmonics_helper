@@ -6,131 +6,30 @@ This tool check prohibitition or some important things from MusicXML files - mos
 
 ---
 
-### Requirements
-
-Ruby is required
-Please install ruby
-
-And support score is four parts score only
-
----
-
-#### How To Install Ruby
-
-- for windows
-
-Download installer and install Ruby
-
-[Ruby Instller download page](https://rubyinstaller.org/)
-
-Set the pathy
-
-[How to set path](https://www.computerhope.com/issues/ch000549.htm)
-
-Check install is finished?
-
-Use command prompt or Power shell etc..
-
-If not, please reboot
-
-```sh
-ruby -v
-```
-
-Install bundler
-
-```sh
-gem install bundler
-```
-
-- for Mac
-
-ruby is already installed, but it may be older version
-
-If not move, please update version
-
-
-Install homebrew
-
-[Homebrew](https://brew.sh/)
-
-Install rbenv and update Ruby version
-
-```sh
-brew install rbenv ruby-build
-rbenv install 2.5.0
-rbenv global 2.5.0
-```
-
-Confirm update version
-
-```sh
-ruby -v
-```
-
-Install bundler
-
-```sh
-gem install bundler
-```
-
-- for linux
-
-Good luck(maybe easy to linux user)
-
----
-
 ### Usage
 
-set xml files under files directory and execute
-
-```sh
-bundle exec ruby exe/main.rb [filename]
+```rb
+# input MusicXML Format
+formatter = HarmonicsHelper::ProhibitFormatter.new(xml)
+# get prohibit info
+prohibit_info = formatter.prohibit_info
 ```
 
-example of contain prohibit
+Example of Prohibits Info
 
-```sh
-$ bundle exec ruby exe/main.rb BadSample.xml
-consecutive octave or fifth
-[Failure] Prohibits are exist, please check yourself again
-["--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-is code?
-[Failure] Prohibits are exist, please check yourself again
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]
-[Failure] Prohibit is found
 ```
-
-example of good pattern
-
-```sh
-$ bundle exec ruby exe/main.rb GoodSample.xml
-consecutive octave or fifth
-[Success] Prohibits are not found
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-is code?
-[Success] Prohibits are not found
-["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]
-[Success] Prohibit is not found
+{"prohibit_info"=>
+  [{"all_prohibit"=>["result check all prohibit", "[Failure] Prohibits may be exist, please check yourself again", 
+  {"consecutive_prohibit"=>["result check consecutive octave or fifth", "[Failure] Prohibits may be exist, please check yourself again", ["--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"], ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"], ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"], ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"], ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"], ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--"]]}, 
+  {"code_prohibit"=>["result check codes are fulfilled", "[Failure] Prohibits may be exist, please check yourself again", ["--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "--OK--", "!!NG!!", "--OK--"]]}]}
 ```
-
 
 ### TODO
 
 It is trial version now
 Consecutive octave and fifth, open fifth only now
 
-- validate
+- correct validate
 - single part prohibit
 - hidden prohibit
 - part distance prohibit
@@ -143,3 +42,17 @@ Consecutive octave and fifth, open fifth only now
 - case not four part
 
 etc
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/harmonics_helper. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
