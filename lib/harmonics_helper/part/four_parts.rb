@@ -44,7 +44,7 @@ module HarmonicsHelper
       end
 
       def initialize_common_duration(parser)
-        # TODO: if not common duration exist, shouldn't be error
+        # TOD: if not common duration exist, shouldn't be error
         @common_duration = @parts.map { |part| parser.durations(part) }.uniq
         four_parts_duration_validation(@common_duration)
         @common_duration

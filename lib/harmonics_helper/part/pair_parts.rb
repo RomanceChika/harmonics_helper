@@ -43,12 +43,12 @@ module HarmonicsHelper
       #
       # @return [Array] interval progression as numbers array
       def full_interval_progression()
-        # TODO: distance and single progression have different point, should be rewritten
+        # TOD: distance and single progression have different point, should be rewritten
         progression_base(full_intervals)
       end
 
       # get intervals of pair parts
-      # TODO: should implement if different duration
+      # TOD: should implement if different duration
       #
       # @return [Array] interval as numbers array
       def intervals()
@@ -56,7 +56,7 @@ module HarmonicsHelper
       end
 
       # get intervals progression of pair parts
-      # TODO: should implement if different duration
+      # TOD: should implement if different duration
       #
       # @return [Array] interval progression as numbers array
       def intervals_progression()

@@ -32,7 +32,7 @@ module HarmonicsHelper
     end
 
     # implement check hidden octave or fifth
-    # TODO: should be had test
+    # TOD: should be had test
     #
     # @param [Array] progression
     # @return [Array] prohibit as boolean array
@@ -46,9 +46,9 @@ module HarmonicsHelper
       end
     end
 
-    # TODO: Single part's big jump progress should be alerted
-    # TODO: Naibor Pair parts, should be between 8 degrees (case bass 12)
-    # TODO: Distribution conversion should be alerted 
+    # TOD: Single part's big jump progress should be alerted
+    # TOD: Naibor Pair parts, should be between 8 degrees (case bass 12)
+    # TOD: Distribution conversion should be alerted 
 
   end
 
@@ -74,14 +74,14 @@ module HarmonicsHelper
     end
 
     # check hidden octave and fifth between soprano and bass
-    # TODO: implement
+    # TOD: implement
     #
     # @return [Array] prohibit boolean arrays 
     def hidden_prohibit_all()
     end
 
     # check code confighred 
-    # TODO: if non harmonic tone is include,it is not prohibit ,alert
+    # TOD: if non harmonic tone is include,it is not prohibit ,alert
     # 
     # @return [Array] prohibit boolean arrays
     def code_configured_all()
