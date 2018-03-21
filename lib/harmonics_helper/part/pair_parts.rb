@@ -5,6 +5,7 @@ module HarmonicsHelper
 
   module Part
 
+    # not use now
     # class deal with pair of parts
     class PairParts
       include PartModule 

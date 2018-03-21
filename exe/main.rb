@@ -1,15 +1,8 @@
 require "harmonics_helper"
 
-if ARGV.length == 0 
-  puts "please set file name"
-  exit
+def file_path(file_name)
+  File.join(File.dirname(__FILE__), '../files/' + file_name)
 end
-file_name = ARGV[0]
-begin
-  parser = HarmonicsHelper::Parser.new(file_name)
-  prohibit_checker = HarmonicsHelper::ProhibitChecker.new(parser)
-  output_formatter = HarmonicsHelper::OutputFormatter.new(prohibit_checker)
-  output_formatter.output
-rescue Errno::ENOENT => e
-  puts "File is Not Found"
-end
+xml = open(file_path("BadSample.xml"))
+formatter = HarmonicsHelper::ProhibitFormatter.new(xml)
+p formatter.prohibit_info

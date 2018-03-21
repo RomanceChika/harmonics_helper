@@ -1,6 +1,7 @@
 RSpec.describe HarmonicsHelper::Parser do
 
-  let(:parser) { HarmonicsHelper::Parser.new("MusicXMLSample.xml") }
+  let(:xml) { open(File.join(File.dirname(__FILE__), '../files/' + "MusicXMLSample.xml")) }
+  let(:parser) { HarmonicsHelper::Parser.new(xml) }
 
   describe "#initialize" do
     it "document not to be nill" do

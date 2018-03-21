@@ -14,8 +14,8 @@ module HarmonicsHelper
     # initialize
     # set document by file name
     # set sounds by config
-    def initialize(file_name)
-      @document = REXML::Document.new(open(file_path(file_name)))
+    def initialize(xml)
+      @document = REXML::Document.new(xml)
     end
 
     # get part voice numbers removed duplication
@@ -61,16 +61,6 @@ module HarmonicsHelper
     end
 
     attr_accessor :document
-
-    private
-    # get full path of file name
-    #
-    # @params [String] file_name MusicXMLFileName
-    # @return [String] full path of file
-    def file_path(file_name)
-      File.join(File.dirname(__FILE__), '../../files/' + file_name)
-    end
-
   end
 
 end
