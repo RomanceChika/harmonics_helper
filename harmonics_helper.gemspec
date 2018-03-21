@@ -10,11 +10,11 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "help tool to study harmonics"
   spec.description   = "check harmonics rule automatic by MusicXML"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "not yet"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = "http://mygemserver.com"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
