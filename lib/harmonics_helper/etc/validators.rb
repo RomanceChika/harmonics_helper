@@ -21,7 +21,7 @@ module HarmonicsHelper
     end
 
     # if each parts durations is different, raise error
-    # TODO: should implement different duration 
+    #  should implement different duration 
     # 
     # @params[Array] all_durations
     def four_parts_duration_validation(common_duration)
