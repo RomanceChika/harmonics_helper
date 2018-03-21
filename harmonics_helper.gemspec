@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "help tool to study harmonics"
   spec.description   = "check harmonics rule automatic by MusicXML"
-  spec.homepage      = "not yet"
+  spec.homepage      = "http://obake.org"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)
