@@ -48,6 +48,18 @@ RSpec.describe HarmonicsHelper::Parser do
     end
   end
 
+  describe "#divisions" do
+    it "sample divisions is 1" do
+      expect(parser.divisions).to eq(1)
+    end
+  end
+
+  describe "#measure_size" do
+    it "sample measure is 5" do
+      expect(parser.measure_size).to eq(5)
+    end
+  end
+
   describe "#durations" do
     it "sample soprano durations length is 8" do
       expect(parser.durations(1).length).to eq(8)

@@ -54,6 +54,7 @@ module HarmonicsHelper
 
   class ProhibitChecker
     include ProhibitCheckerModule
+    include Part::PartModule
 
     # initialize
     #
@@ -61,7 +62,7 @@ module HarmonicsHelper
     def initialize(parser)
       @parser = parser
       @parts = parser.parts
-      @full_sounds = @parts.map { |part| @parser.sounds(part) }
+      @full_sounds = @parts.map { |part| full_sounds_base(@parser.sounds(part), @parser.durations(part)) }
       @rotations = Code::Rotations.new(@full_sounds)
       @four_parts = Part::FourParts.new(parser)
     end

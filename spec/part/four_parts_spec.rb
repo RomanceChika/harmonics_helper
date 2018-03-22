@@ -64,10 +64,10 @@ RSpec.describe HarmonicsHelper::Part::FourParts do
       end
     end
 
-    it "sample all parts length is 8" do
+    it "sample all parts length is 20" do
       four_parts.all_pairs.each do |pair|
         pair.each do |part|
-          expect(part.length).to eq(8)
+          expect(part.length).to eq(20)
         end
       end
     end
@@ -104,10 +104,10 @@ RSpec.describe HarmonicsHelper::Part::FourParts do
       end
     end
 
-    it "sample all parts length is 8" do
+    it "sample all parts length is 20" do
       four_parts.outer_pair.each do |pair|
         pair.each do |part|
-          expect(part.length).to eq(8)
+          expect(part.length).to eq(20)
         end
       end
     end

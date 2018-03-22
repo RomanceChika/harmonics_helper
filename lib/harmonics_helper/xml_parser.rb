@@ -51,6 +51,21 @@ module HarmonicsHelper
       @document.elements["//attributes/time/beat-type"].text.to_i
     end
 
+    # get divisions
+    # default 1, if 4/4, minimum note length is 16th note, divisions is 4
+    #
+    # @return [Integer] divisions
+    def divisions()
+      @document.elements["//attributes/divisions"].text.to_i
+    end
+
+    # get measure size
+    #
+    # @return [Integer]
+    def measure_size()
+      @document.elements["count(//measure)"]
+    end
+
     # get all sounds dulation(unit of length) of part
     #
     # @return [Array] durations as numbers array
