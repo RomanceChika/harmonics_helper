@@ -8,4 +8,4 @@ xml = open(file_path("GoodSample.xml"))
 formatter = HarmonicsHelper::ProhibitFormatter.new(xml)
 result_hash = formatter.result_hash
 
-puts result_hash["prohibit_info"]
+puts result_hash
