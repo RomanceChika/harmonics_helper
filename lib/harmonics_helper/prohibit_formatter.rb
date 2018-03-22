@@ -22,7 +22,7 @@ module HarmonicsHelper
       details.merge!(all_prohibit_detail)
       details.merge!(consecutive_prohibit_detail)
       details.merge!(code_prohibit_detail)
-      { details }
+      details
     end
 
     # get detail about all prohibit
