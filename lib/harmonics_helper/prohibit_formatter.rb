@@ -58,7 +58,7 @@ module HarmonicsHelper
       detail.merge!(header("result check codes are fulfilled"))
       detail.merge!(message(has_code_prohibit?))
       detail_array = slice_detail(@prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"})
-      detail.merge!(details(detail_array))
+      detail.merge!([details(detail_array)])
       { "code_prohibit" => detail }
     end
     
