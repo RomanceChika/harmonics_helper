@@ -1,4 +1,5 @@
 require "harmonics_helper/prohibit_checker"
+require "json"
 
 module HarmonicsHelper
 
@@ -16,11 +17,11 @@ module HarmonicsHelper
     # get details about all prohibit
     #
     # @return[Hash]
-    def prohibit_info()
-      details = []
-      details << all_prohibit_detail
-      details << consecutive_prohibit_detail
-      details << code_prohibit_detail
+    def result_hash()
+      details = {}  
+      details.merge!(all_prohibit_detail)
+      details.merge!(consecutive_prohibit_detail)
+      details.merge!(code_prohibit_detail)
       { "prohibit_info" => details }
     end
 
@@ -28,9 +29,9 @@ module HarmonicsHelper
     #
     # @return[Hash]
     def all_prohibit_detail()
-      detail = []
-      detail << "result check all prohibit"
-      detail << prohibit_message(has_any_prohibit?)
+      detail = {} 
+      detail.merge!(header("result check all prohibit"))
+      detail.merge!(message(has_any_prohibit?))
       { "all_prohibit" => detail }
     end
 
@@ -38,12 +39,14 @@ module HarmonicsHelper
     #
     # @return[Hash]
     def consecutive_prohibit_detail()
-      detail = []
-      detail << "result check consecutive octave or fifth"
-      detail << prohibit_message(has_consecutive_prohibit?)
+      detail = {}
+      detail.merge!(header("result check consecutive octave or fifth"))
+      detail.merge!(message(has_consecutive_prohibit?))
+      detail_array = []
       @prohibit_checker.consecutive_prohibits_all
         .map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }
-        .each{ |prohibits| detail << prohibits.each_slice(measure_slicer).to_a } 
+        .each{ |prohibits| detail_array << slice_detail(prohibits) } 
+      detail.merge!(details(detail_array))
       { "consecutive_prohibit" => detail }
     end
 
@@ -51,14 +54,37 @@ module HarmonicsHelper
     #
     # @return[Hash]
     def code_prohibit_detail()
-      detail = []
-      detail << "result check codes are fulfilled"
-      detail << prohibit_message(has_code_prohibit?)
-      detail << @prohibit_checker.code_configured_all
-        .map{ |code| code ? "--OK--" : "!!NG!!"}
-        .each_slice(measure_slicer)
-        .to_a
+      detail = {}
+      detail.merge!(header("result check codes are fulfilled"))
+      detail.merge!(message(has_code_prohibit?))
+      detail_array = slice_detail(@prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"})
+      detail.merge!(details(detail_array))
       { "code_prohibit" => detail }
+    end
+    
+    # @params [String] header_message 
+    # @return [Hash]
+    def header(header_message)
+      { "header" => header_message }
+    end
+
+    # @params [Boolean] has_prohibit 
+    # @return [Hash]
+    def message(has_prohibit)
+      { "message" => prohibit_message(has_prohibit) }
+    end
+
+    # @params [Array] detail_array
+    # @return [Hash]
+    def details(detail_array)
+      { "details" => detail_array }
+    end
+
+    # slice detail by measures
+    #
+    # @return[Hash]
+    def slice_detail(array)
+      array.each_slice(measure_slicer).to_a.map.with_index { |detail, index| {index+1 => detail } }
     end
 
     # get prohibit message
