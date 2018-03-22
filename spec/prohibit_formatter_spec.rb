@@ -39,4 +39,11 @@ RSpec.describe HarmonicsHelper::ProhibitFormatter do
       expect(good_formatter.prohibit_message(false).include?("Success")).to eq(true)
     end
   end
+
+  describe "#measure_slicer" do
+    it "good sample measure slicer is 4" do
+      expect(good_formatter.measure_slicer).to eq(4)
+    end
+  end
+
 end

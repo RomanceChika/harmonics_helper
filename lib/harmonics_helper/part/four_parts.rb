@@ -51,7 +51,7 @@ module HarmonicsHelper
       end
 
       def initialize_four_parts(parser, parts)
-        parts.map { |part| parser.sounds(part) }.sort.map { |sounds| progression_base(sounds)}
+        parts.map { |part| full_sounds_base(parser.sounds(part), parser.durations(part)) }.sort.map { |sounds| progression_base(sounds)}
       end
 
     end

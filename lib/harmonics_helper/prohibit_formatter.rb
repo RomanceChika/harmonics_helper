@@ -41,7 +41,9 @@ module HarmonicsHelper
       detail = []
       detail << "result check consecutive octave or fifth"
       detail << prohibit_message(has_consecutive_prohibit?)
-      @prohibit_checker.consecutive_prohibits_all.map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }.each{ |prohibits| detail << prohibits } 
+      @prohibit_checker.consecutive_prohibits_all
+        .map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }
+        .each{ |prohibits| detail << prohibits.each_slice(measure_slicer).to_a } 
       { "consecutive_prohibit" => detail }
     end
 
@@ -52,7 +54,10 @@ module HarmonicsHelper
       detail = []
       detail << "result check codes are fulfilled"
       detail << prohibit_message(has_code_prohibit?)
-      detail << @prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"}
+      detail << @prohibit_checker.code_configured_all
+        .map{ |code| code ? "--OK--" : "!!NG!!"}
+        .each_slice(measure_slicer)
+        .to_a
       { "code_prohibit" => detail }
     end
 
@@ -84,5 +89,13 @@ module HarmonicsHelper
     def has_any_prohibit?
       has_consecutive_prohibit? || has_code_prohibit?
     end
+
+    # each measure size corrected by divisions
+    #
+    # @return [Integer]
+    def measure_slicer()
+      @parser.divisions * @parser.beat_type
+    end
+
   end
 end
