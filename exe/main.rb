@@ -6,6 +6,5 @@ def file_path(file_name)
 end
 xml = open(file_path("GoodSample.xml"))
 formatter = HarmonicsHelper::ProhibitFormatter.new(xml)
-result_hash = formatter.result_hash
-
-puts result_hash
+puts JSON.pretty_generate(formatter.all_result_hash)
+puts JSON.pretty_generate(formatter.each_result_hash)

@@ -19,324 +19,15 @@ Example of Prohibits Info
 
 ```
 {
-  "prohibit_info": {
-    "all_prohibit": {
-      "header": "result check all prohibit",
-      "message": "[Success] Prohibits are not found"
-    },
-    "consecutive_prohibit": {
-      "header": "result check consecutive octave or fifth",
-      "message": "[Success] Prohibits are not found",
-      "details": [
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ],
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ],
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ],
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ],
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ],
-        [
-          {
-            "0": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "1": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "2": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "3": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          },
-          {
-            "4": [
-              "--OK--",
-              "--OK--",
-              "--OK--",
-              "--OK--"
-            ]
-          }
-        ]
-      ]
-    },
-    "code_prohibit": {
-      "header": "result check codes are fulfilled",
-      "message": "[Success] Prohibits are not found",
-      "details": [
-        {
-          "0": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "1": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "2": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "3": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "4": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        }
-      ]
-    }
-
+  "all_prohibit": {
+    "header": "result check all prohibit",
+    "message": "[Success] Prohibits are not found"
+  }
+}
 {
-  "prohibit_info": {
-    "all_prohibit": {
-      "header": "result check all prohibit",
-      "message": "[Success] Prohibits are not found"
-    },
+  "each_result": {
     "consecutive_prohibit": {
-      "header": "result check consecutive octave or fifth",
+      "header": "consecutive octave or fifth",
       "message": "[Success] Prohibits are not found",
       "details": [
         [
@@ -594,49 +285,51 @@ Example of Prohibits Info
       ]
     },
     "code_prohibit": {
-      "header": "result check codes are fulfilled",
+      "header": "codes are fulfilled",
       "message": "[Success] Prohibits are not found",
       "details": [
-        {
-          "1": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "2": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "3": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "4": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        },
-        {
-          "5": [
-            "--OK--",
-            "--OK--",
-            "--OK--",
-            "--OK--"
-          ]
-        }
+        [
+          {
+            "1": [
+              "--OK--",
+              "--OK--",
+              "--OK--",
+              "--OK--"
+            ]
+          },
+          {
+            "2": [
+              "--OK--",
+              "--OK--",
+              "--OK--",
+              "--OK--"
+            ]
+          },
+          {
+            "3": [
+              "--OK--",
+              "--OK--",
+              "--OK--",
+              "--OK--"
+            ]
+          },
+          {
+            "4": [
+              "--OK--",
+              "--OK--",
+              "--OK--",
+              "--OK--"
+            ]
+          },
+          {
+            "5": [
+              "--OK--",
+              "--OK--",
+              "--OK--",
+              "--OK--"
+            ]
+          }
+        ]
       ]
     }
   }

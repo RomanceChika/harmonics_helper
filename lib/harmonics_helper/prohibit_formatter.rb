@@ -17,18 +17,17 @@ module HarmonicsHelper
     # get details about all prohibit
     #
     # @return[Hash]
-    def result_hash()
+    def each_result_hash()
       details = {}  
-      details.merge!(all_prohibit_detail)
       details.merge!(consecutive_prohibit_detail)
       details.merge!(code_prohibit_detail)
-      details
+      { "each_result" => details } 
     end
 
     # get detail about all prohibit
     #
     # @return[Hash]
-    def all_prohibit_detail()
+    def all_result_hash()
       detail = {} 
       detail.merge!(header("result check all prohibit"))
       detail.merge!(message(has_any_prohibit?))
@@ -39,27 +38,19 @@ module HarmonicsHelper
     #
     # @return[Hash]
     def consecutive_prohibit_detail()
-      detail = {}
-      detail.merge!(header("result check consecutive octave or fifth"))
-      detail.merge!(message(has_consecutive_prohibit?))
       detail_array = []
       @prohibit_checker.consecutive_prohibits_all
         .map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }
         .each{ |prohibits| detail_array << slice_detail(prohibits) } 
-      detail.merge!(details(detail_array))
-      { "consecutive_prohibit" => detail }
+      each_prohibit_detail("consecutive_prohibit", "consecutive octave or fifth", has_consecutive_prohibit?, detail_array)
     end
 
     # get detail about code prohibit
     #
     # @return[Hash]
     def code_prohibit_detail()
-      detail = {}
-      detail.merge!(header("result check codes are fulfilled"))
-      detail.merge!(message(has_code_prohibit?))
-      detail_array = slice_detail(@prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"})
-      detail.merge!([details(detail_array)])
-      { "code_prohibit" => detail }
+      detail_array = [slice_detail(@prohibit_checker.code_configured_all.map{ |code| code ? "--OK--" : "!!NG!!"})]
+      each_prohibit_detail("code_prohibit", "codes are fulfilled", has_code_prohibit?, detail_array)
     end
     
     # @params [String] header_message 
@@ -78,6 +69,19 @@ module HarmonicsHelper
     # @return [Hash]
     def details(detail_array)
       { "details" => detail_array }
+    end
+
+    # @params [String] key
+    # @prams [String] header_message
+    # @params [Boolean] has_prohibit
+    # @params [Array] detail_array
+    # @return [Hash]
+    def each_prohibit_detail(key, header_message, has_prohibit, detail_array)
+      detail = {}
+      detail.merge!(header(header_message))
+      detail.merge!(message(has_prohibit))
+      detail.merge!(details(detail_array))
+      { key => detail}
     end
 
     # slice detail by measures
