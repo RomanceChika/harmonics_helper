@@ -69,9 +69,12 @@ module HarmonicsHelper
 
     # check consencutive prohibits all pair
     #
-    # @return [Array] prohibit boolean 2 dimension arrays
+    # @return [Array[Boolean]]
     def consecutive_prohibits_all()
-     @four_parts.all_pairs.map { |pair| consecutive_prohibit(pair) }
+     @four_parts.all_pairs
+      .map { |pair| consecutive_prohibit(pair) }
+      .transpose
+      .map { |all_combination| all_combination.any? }
     end
 
     # check hidden octave and fifth between soprano and bass
