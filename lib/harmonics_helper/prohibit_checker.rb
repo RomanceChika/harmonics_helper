@@ -58,7 +58,7 @@ module HarmonicsHelper
 
     # initialize
     #
-    # @param [Parser] xml parser class
+    # @param [Parser] parser
     def initialize(parser)
       @parser = parser
       @parts = parser.parts
@@ -70,7 +70,7 @@ module HarmonicsHelper
     # check consencutive prohibits all pair
     #
     # @return [Array[Boolean]]
-    def consecutive_prohibits_all()
+    def consecutive_prohibits_all
      @four_parts.all_pairs
       .map { |pair| consecutive_prohibit(pair) }
       .transpose
@@ -81,14 +81,14 @@ module HarmonicsHelper
     # TOD: implement
     #
     # @return [Array] prohibit boolean arrays 
-    def hidden_prohibit_all()
+    def hidden_prohibit_all
     end
 
     # check code confighred 
     # TOD: if non harmonic tone is include,it is not prohibit ,alert
     # 
     # @return [Array] prohibit boolean arrays
-    def code_configured_all()
+    def code_configured_all
       @rotations.rotation_types.map { |rotation_type| code?(rotation_type) }
     end
 

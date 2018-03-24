@@ -60,7 +60,6 @@ end
 RSpec.describe HarmonicsHelper::ProhibitChecker do
 
   # B means BAD_
-  bparts = [1, 2, 5, 6]
   bsoprano_durations = [1, 1, 1, 1, 1, 1, 2, 1, 3, 3]
   balt_durations = [1, 1, 1, 1, 1, 1, 2, 1, 3, 3]
   btenor_durations = [1, 1, 1, 1, 1, 1, 2, 1, 3, 3]
@@ -100,21 +99,6 @@ RSpec.describe HarmonicsHelper::ProhibitChecker do
   end
   let(:good_prohibit_checker) { HarmonicsHelper::ProhibitChecker.new(@good_parser_mock) }
   let(:bad_prohibit_checker) { HarmonicsHelper::ProhibitChecker.new(@bad_parser_mock) }
-
-=begin
-  describe "#prohibit?" do
-    context "bad sample has prohibit" do
-      it "bas sample has prohibit" do
-        expect(bad_prohibit_checker.prohibit?).to eq(true)
-      end
-    end
-    context "good sample has not prohibit" do
-      it "good sample has no prohibit" do
-        expect(good_prohibit_checker.prohibit?).to eq(false)
-      end
-    end
-  end
-=end
 
   describe "#consecutive_prohibits_all" do
     context "bad sample has prohibit" do

@@ -6,7 +6,7 @@ module HarmonicsHelper
 
     # if sounds and durations is different size, raise Error
     def durations_validator(sounds, durations)
-      if sounds.length != durations.length then
+      if sounds.length != durations.length
         raise HarmonicsHelper::Errors::LengthError.new("sounds length is different from durations length")
       end
     end
@@ -15,7 +15,7 @@ module HarmonicsHelper
     #
     # @param [Array] parts
     def four_parts_validation(parts)
-      if parts.length != 4 then
+      if parts.length != 4
         raise HarmonicsHelper::Errors::FourPartsError.new("Not Fout Tone")
       end
     end
@@ -26,14 +26,7 @@ module HarmonicsHelper
     # @params[Array] all_durations
     def four_parts_duration_validation(common_duration)
       if common_duration.length != 1
-        raise HarmonicsHelper::Errors::DurationUnmatchError.new("Durations are different")
-      end
-    end
-
-    # if each length is different, raise exception
-    def length_validator()
-      if @full_sounds1.length != @full_sounds2.length then
-        raise HarmonicsHelper::Errors::LengthError.new("length of each sound is different")
+        raise HarmonicsHelper::Errors::DurationUnmatchedError.new("Durations are different")
       end
     end
 

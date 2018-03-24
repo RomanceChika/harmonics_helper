@@ -43,7 +43,7 @@ RSpec.describe HarmonicsHelper::Part::FourParts do
         expect { HarmonicsHelper::Part::FourParts.new(@strange_parts_parsermock) }.to raise_error(HarmonicsHelper::Errors::FourPartsError)
       end
       it "if parts duration is not common raise error" do
-        expect { HarmonicsHelper::Part::FourParts.new(@strange_durations_parsermock) }.to raise_error(HarmonicsHelper::Errors::DurationUnmatchError)
+        expect { HarmonicsHelper::Part::FourParts.new(@strange_durations_parsermock) }.to raise_error(HarmonicsHelper::Errors::DurationUnmatchedError)
       end
     end
     describe "success to initialize good parser" do
