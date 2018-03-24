@@ -2,7 +2,7 @@ module HarmonicsHelper
 
   module Errors
 
-    # length has unmatch
+    # length is not matched
     class LengthError < StandardError
 
       def initialize(message)
@@ -12,7 +12,7 @@ module HarmonicsHelper
 
     end
 
-    # parts length contains unmatch
+    # parts length is matched
     class PartsLengthError < StandardError
 
       def initialize(error_code, message)
@@ -31,7 +31,7 @@ module HarmonicsHelper
     end
 
     # Duration is different 
-    class DurationUnmatchError < StandardError
+    class DurationUnmatchedError < StandardError
 
       def initialize(message)
         @code = 51

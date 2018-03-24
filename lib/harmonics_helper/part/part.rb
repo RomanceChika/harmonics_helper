@@ -32,7 +32,7 @@ module HarmonicsHelper
       #
       # @param [Integer] sound1
       # param [Integer] sound2
-      # @return [Array] intarvals number array in octave ranges
+      # @return [Array] distance number array in octave ranges
       def distance_base(sound1, sound2)
         (sound1 - sound2).abs % 12
       end
@@ -42,15 +42,6 @@ module HarmonicsHelper
       # @return [Array] sounds array repeated sound where duration is over 2
       def full_sounds_base(sounds, durations)
         sounds.map.with_index{ |sound, index| Array.new(durations[index], sound) }
-          .flatten
-      end
-
-      # full sounds hash has sounds and order information
-      #
-      # @return [Array] sounds and order(count), each element is hash
-      def full_sounds_hash_base(sounds, durations)
-        # order is number for user, start with 1
-        sounds.map.with_index{ |sound, index| Array.new(durations[index], { "sound" => sound, "order" => index + 1 })}
           .flatten
       end
 

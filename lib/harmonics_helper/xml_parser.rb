@@ -8,13 +8,12 @@ module HarmonicsHelper
   class Parser
     include Helper
     
-    # map sounds name to sounds number
-    @@sounds = YAML.load_file(Helper.config_path("sounds.yml"))
-    
     # initialize
     # set document by file name
     # set sounds by config
     def initialize(xml)
+      # map sounds name to sounds number
+      @sounds = YAML.load_file(Helper.config_path("sounds.yml"))
       @document = REXML::Document.new(xml)
     end
 
@@ -34,20 +33,20 @@ module HarmonicsHelper
     def sounds(part)
       REXML::XPath.each(@document, "//note"){ |element| element }
         .select{ |e| e.elements["voice"].text.to_i == part}
-        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @@sounds[e.elements["pitch/step"].text]}
+        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @sounds[e.elements["pitch/step"].text]}
     end
 
     # get beat numerator
     # 
     # @return [Integer] beat
-    def beat()
+    def beat
       @document.elements["//attributes/time/beats"].text.to_i
     end
 
     # get beat denominator
     #
     # @return [Integer] beat_type
-    def beat_type()
+    def beat_type
       @document.elements["//attributes/time/beat-type"].text.to_i
     end
 
@@ -55,14 +54,14 @@ module HarmonicsHelper
     # default 1, if 4/4, minimum note length is 16th note, divisions is 4
     #
     # @return [Integer] divisions
-    def divisions()
+    def divisions
       @document.elements["//attributes/divisions"].text.to_i
     end
 
     # get measure size
     #
     # @return [Integer]
-    def measure_size()
+    def measure_size
       @document.elements["count(//measure)"]
     end
 

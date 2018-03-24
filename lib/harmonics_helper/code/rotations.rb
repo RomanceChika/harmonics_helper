@@ -12,7 +12,7 @@ module HarmonicsHelper
       # if it has not　form of code, apply ""
       # 
       # @return [Array] rotations
-      def rotation_types()
+      def rotation_types
         # basso continuos array
         basso_continuos = @full_harmonies.map{ |harmony| harmony.map{ |part| degree_from_bass(part, bass(harmony)) }.uniq.sort }
         basso_continuos.map{ |basso_continuo| rotation_hash.has_key?(basso_continuo) ? rotation_hash[basso_continuo] : "" }

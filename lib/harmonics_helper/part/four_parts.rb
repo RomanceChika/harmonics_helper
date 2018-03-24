@@ -23,16 +23,16 @@ module HarmonicsHelper
       # get all pairs from 4 parts
       #
       # @return [Array[Array[Array[Hash]]]] 
-      def all_pairs()
+      def all_pairs
         @four_parts.combination(2).to_a
       end
 
       # get pair bass and soprano
       #
       # @return [Array[Array[Array[Hash]]]] 
-      def outer_pair()
+      def outer_pair
         # style is same with all_pairs
-        @four_parts.select.with_index { |part, index| index==0 || index==3 }.combination(2).to_a
+        @four_parts.select.with_index { |_, index| index==0 || index==3 }.combination(2).to_a
       end
 
       private
