@@ -121,7 +121,8 @@ module HarmonicsHelper
     #
     # @return [Integer]
     def measure_slicer
-      @parser.divisions * @parser.beat
+      # beat type is 2, min duration is 2, should be corrected
+      (@parser.beat_type == 2) ? @parser.divisions * @parser.beat * @parser.beat_type : @parser.divisions * @parser.beat
     end
 
   end
