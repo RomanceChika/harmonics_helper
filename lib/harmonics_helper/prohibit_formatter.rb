@@ -39,10 +39,7 @@ module HarmonicsHelper
     # @return[Hash]
     def consecutive_prohibit_detail()
       detail_array = [slice_detail(@prohibit_checker.consecutive_prohibits_all.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } )]
-      p @prohibit_checker.consecutive_prohibits_all
-      # @prohibit_checker.consecutive_prohibits_all
-      #  .map{ |prohibits| prohibits.map{ |prohibit| prohibit ? "!!NG!!" : "--OK--" } }
-      #  .each{ |prohibits| detail_array << slice_detail(prohibits) } 
+      @prohibit_checker.consecutive_prohibits_all
       each_prohibit_detail("consecutive_prohibit", "consecutive octave or fifth", has_consecutive_prohibit?, detail_array)
     end
 
