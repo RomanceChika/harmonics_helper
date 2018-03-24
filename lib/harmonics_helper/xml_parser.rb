@@ -33,7 +33,14 @@ module HarmonicsHelper
     def sounds(part)
       REXML::XPath.each(@document, "//note"){ |element| element }
         .select{ |e| e.elements["voice"].text.to_i == part}
-        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @sounds[e.elements["pitch/step"].text]}
+        .map{ |e| e.elements["pitch/octave"].text.to_i * 12 + @sounds[e.elements["pitch/step"].text] + alter(e) }
+    end
+
+    # get alter ex. # - +1 ♭ - -1
+    #
+    # @param [Object] e
+    def alter(e)
+      e.elements["pitch/alter"].nil? ? 0 : e.elements["pitch/alter"].text.to_i
     end
 
     # get beat numerator
